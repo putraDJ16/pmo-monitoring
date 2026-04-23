@@ -133,11 +133,18 @@ export function renderMonitoringMap(container) {
 
     <!-- Map + Table Layout -->
     <div style="display: flex; flex-direction: column; gap: 16px;">
-      <!-- Map -->
-      <div id="map" style="width: 100%; height: 340px; border-radius: var(--radius-xl); overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow-sm); z-index: 1;"></div>
+      <!-- Map Container with Maximize Button -->
+      <div id="map-container" style="position: relative; width: 100%; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); height: 340px; z-index: 1;">
+        <div id="map" style="width: 100%; height: 100%; border-radius: var(--radius-xl); overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow-sm);"></div>
+        
+        <!-- Maximize/Minimize Toggle -->
+        <button id="map-toggle" class="btn btn-white btn-icon" style="position: absolute; top: 12px; right: 12px; z-index: 1000; box-shadow: var(--shadow-lg); border: 1px solid var(--border); border-radius: var(--radius-md); width: 36px; height: 36px;" title="Maximize/Minimize Map">
+          <i class="ph ph-corners-out" id="map-toggle-icon" style="font-size: 20px; color: var(--text-primary);"></i>
+        </button>
+      </div>
 
-      <!-- Table -->
-      <div class="data-table-wrapper" style="max-height: 380px; display: flex; flex-direction: column;">
+      <!-- Table Area (Will shift down when map expands) -->
+      <div id="table-area" class="data-table-wrapper" style="max-height: 380px; display: flex; flex-direction: column; transition: all 0.4s ease;">
         <div style="overflow-y: auto; flex: 1;">
           <table class="data-table">
             <thead>
@@ -165,7 +172,30 @@ export function renderMonitoringMap(container) {
 
   // ---- Initialize Map ----
   setTimeout(() => {
+    const mapContainer = document.getElementById('map-container');
+    const mapToggle = document.getElementById('map-toggle');
+    const mapToggleIcon = document.getElementById('map-toggle-icon');
+    
+    // Maximize/Minimize Logic
+    let isMaximized = false;
+    mapToggle.addEventListener('click', () => {
+      isMaximized = !isMaximized;
+      if (isMaximized) {
+        mapContainer.style.height = '600px';
+        mapToggleIcon.className = 'ph ph-corners-in';
+      } else {
+        mapContainer.style.height = '340px';
+        mapToggleIcon.className = 'ph ph-corners-out';
+      }
+      
+      // Tell Leaflet map to invalidate size after transition
+      setTimeout(() => {
+        map.invalidateSize({ pan: true });
+      }, 400); // Wait for CSS transition
+    });
+
     const map = L.map('map', { zoomControl: true }).setView([-2.5, 118.0], 5);
+
 
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
