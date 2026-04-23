@@ -39,10 +39,13 @@ File ini dipakai paling awal untuk membentuk fondasi layout aplikasi **Aplikasi 
 - Status badge: Belum Dimulai, Masih Berjalan, Terlambat, Terminasi
 - Quick View (Klik Baris): menampilkan Panel Samping (Drawer) yang berisi ringkasan progress, meta informasi, deskripsi, dan aktivitas terbaru secara sekilas tanpa pindah halaman.
 - Aksi: tombol Action "Detail" membuka Full Page Detail Monitoring.
+- Catatan: Penambahan project hanya dapat dilakukan melalui menu Project khusus (tidak tersedia di halaman monitoring ini).
 
 **Detail Monitoring (Full Page)**
 - Header Informasi Umum (Breadcrumb & Meta Section): Project Name, Project Type (Asset Type), Project Progress (%), Unit PLN, Contract ID, RUPTL Code, Region.
-- Tabulasi Tanah: Survey Tanah (status + chart kriteria), Inventarisasi (map hover: Ruptl Code, Lokasi lengkap), Musyawarah, Pembebasan, Erection, Sertifikasi
+- Tabulasi Tanah:
+  - Khusus Asset Type **Transmisi**: Mendukung multi-data tanah (entry per Tower).
+  - Survey Tanah (status + chart kriteria), Inventarisasi (map hover: Ruptl Code, Lokasi lengkap), Musyawarah, Pembebasan, Erection, Sertifikasi.
 - Tabulasi Pekerjaan Project: progress per pekerjaan fisik
 - Tabulasi S-Curve: grafik rencana vs realisasi waktu dan biaya
 - Tabulasi Bill of Quantity (BoQ): rincian item pekerjaan, volume, satuan, harga satuan, total

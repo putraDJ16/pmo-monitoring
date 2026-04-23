@@ -147,16 +147,33 @@ export function renderMonitoringDetail(container, projectId) {
 
       <!-- Tab Content Area -->
       <div class="tab-content active" id="tab-tanah">
-        <!-- 1. Survey Tanah -->
-        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px;">
-          <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--indigo-100); color: var(--indigo-600); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;">1</div>
-          <h3 style="font-size: 16px; font-weight: 700; color: var(--text-primary);">Survey Tanah</h3>
+        <!-- 1. Survey Tanah Header -->
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--indigo-100); color: var(--indigo-600); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;">1</div>
+            <h3 style="font-size: 16px; font-weight: 700; color: var(--text-primary);">Survey Tanah</h3>
+          </div>
+          ${project.assetType === 'Transmisi' ? `
+            <button class="btn btn-sm btn-ghost" style="color: var(--indigo-600); font-weight: 600;">
+              <i class="ph ph-plus-circle"></i> Tambah Data Tanah (Tower)
+            </button>
+          ` : ''}
         </div>
+
+        ${project.assetType === 'Transmisi' ? `
+          <!-- Multi-Entry for Transmisi (Tower Footings) -->
+          <div style="margin-bottom: 20px; display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px;">
+            <div style="padding: 8px 16px; background: var(--indigo-50); color: var(--indigo-700); border: 1px solid var(--indigo-200); border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; white-space: nowrap;">T.01 - Selesai</div>
+            <div style="padding: 8px 16px; background: white; color: var(--text-secondary); border: 1px solid var(--border); border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; white-space: nowrap;">T.02 - Masih berjalan</div>
+            <div style="padding: 8px 16px; background: white; color: var(--text-secondary); border: 1px solid var(--border); border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; white-space: nowrap;">T.03 - Belum dimulai</div>
+            <div style="padding: 8px 16px; background: white; color: var(--text-secondary); border: 1px solid var(--border); border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; white-space: nowrap;">T.04 - Belum dimulai</div>
+          </div>
+        ` : ''}
 
         <div style="padding: 24px; background: white; border: 1px solid var(--border-light); border-radius: var(--radius-xl); box-shadow: var(--shadow-sm);">
           
           <div style="margin-bottom: 36px;">
-            <div style="font-size: 14px; font-weight: 600; color: var(--text-secondary); margin-bottom: 12px;">Status Survey Tanah</div>
+            <div style="font-size: 14px; font-weight: 600; color: var(--text-secondary); margin-bottom: 12px;">Status Survey Tanah ${project.assetType === 'Transmisi' ? '(Tower T.01)' : ''}</div>
             <div style="display: flex; gap: 12px;">
               <div class="status-survey-btn">Belum dimulai</div>
               <div class="status-survey-btn active masih-berjalan">Masih berjalan</div>
@@ -178,7 +195,7 @@ export function renderMonitoringDetail(container, projectId) {
                 <div class="chart-tooltip">
                   <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px; border-bottom: 1px solid var(--border-light); padding-bottom: 12px;">
                     <i class="ph ph-map-pin-line" style="font-size: 20px; color: var(--indigo-600);"></i>
-                    <div style="font-size: 14px; font-weight: 700; color: var(--text-primary);">Detail Inventarisasi</div>
+                    <div style="font-size: 14px; font-weight: 700; color: var(--text-primary);">Detail Inventarisasi ${project.assetType === 'Transmisi' ? '(T.01)' : ''}</div>
                   </div>
                   <table class="tooltip-table">
                     <tr><td>Ruptl Code</td><td style="font-family: var(--font-mono, monospace); font-weight: 600; color: var(--indigo-600);">: ${project.ruptlCode}</td></tr>

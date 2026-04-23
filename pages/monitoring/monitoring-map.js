@@ -62,9 +62,6 @@ export function renderMonitoringMap(container) {
           <button class="view-switcher-btn"><i class="ph ph-list-bullets"></i> List</button>
           <button class="view-switcher-btn"><i class="ph ph-squares-four"></i> Board</button>
         </div>
-        <button class="btn btn-primary">
-          <i class="ph ph-plus-bold" style="font-size: 14px;"></i> Tambah Project
-        </button>
       </div>
     </div>
 
