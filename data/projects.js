@@ -1,6 +1,13 @@
 export const projectsData = [
   { id: 1, code: 'PRJ-2026-001', name: 'Pembangunan SUTET 500 kV Jalur Utara', contractRef: 'CTR/PLN/2301', assetType: 'Transmisi', status: 'Masih Berjalan', progress: 45, unitPln: 'UIP JBB', ruptlCode: 'RPT-001', region: 'Jawa Barat, Kab. Karawang', lat: -6.302, lng: 107.291, 
-    alamat: 'Jl. Raya Pangkal Perjuangan No. 1', kabupaten: 'Kab. Karawang', kecamatan: 'Karawang Barat', kelurahan: 'Tanjungmekar', desa: 'Tanjungmekar' },
+    alamat: 'Jl. Raya Pangkal Perjuangan No. 1', kabupaten: 'Kab. Karawang', kecamatan: 'Karawang Barat', kelurahan: 'Tanjungmekar', desa: 'Tanjungmekar',
+    landSurvey: [
+      { id: 'T.01', status: 'Selesai', progress: 100, inventarisasi: 100, musyawarah: 100, pembebasan: 100, erection: 100, sertifikasi: 100, alamat: 'Jl. Raya Pangkal Perjuangan No. 1', desa: 'Tanjungmekar', lat: -6.302, lng: 107.291 },
+      { id: 'T.02', status: 'Masih Berjalan', progress: 75, inventarisasi: 100, musyawarah: 100, pembebasan: 80, erection: 20, sertifikasi: 0, alamat: 'Dusun Sukamaju RT 01/02', desa: 'Wadas', lat: -6.310, lng: 107.285 },
+      { id: 'T.03', status: 'Masih Berjalan', progress: 30, inventarisasi: 100, musyawarah: 40, pembebasan: 10, erection: 0, sertifikasi: 0, alamat: 'Area Persawahan Blok B', desa: 'Wadas', lat: -6.315, lng: 107.278 },
+      { id: 'T.04', status: 'Belum Dimulai', progress: 0, inventarisasi: 0, musyawarah: 0, pembebasan: 0, erection: 0, sertifikasi: 0, alamat: 'Jl. Perintis Kemerdekaan', desa: 'Sukakarya', lat: -6.322, lng: 107.270 }
+    ] 
+  },
   { id: 2, code: 'PRJ-2026-002', name: 'Perluasan GI 150 kV Surabaya Selatan', contractRef: 'CTR/PLN/2304', assetType: 'Gardu Induk', status: 'Terlambat', progress: 12, unitPln: 'UIP JBTB', ruptlCode: 'RPT-042', region: 'Jawa Timur, Kota Surabaya', lat: -7.332, lng: 112.766,
     alamat: 'Jl. Ahmad Yani No. 88', kabupaten: 'Kota Surabaya', kecamatan: 'Wonocolo', kelurahan: 'Margorejo', desa: 'Margorejo' },
   { id: 3, code: 'PRJ-2026-003', name: 'PLTMH Way Besai Kapasitas Tambahan', contractRef: 'CTR/PLN/2199', assetType: 'Pembangkit', status: 'Belum Dimulai', progress: 0, unitPln: 'UIP Sumbagsel', ruptlCode: 'RPT-088', region: 'Lampung, Kab. Way Kanan', lat: -4.845, lng: 104.536,
